@@ -1,0 +1,1484 @@
+[
+  {
+    "name": "Authentic Kolhapuri Kanda Lasun Masala",
+    "slug": "kolhapuri-kanda-lasun-masala",
+    "description": "Handcrafted onion-garlic spice blend roasted over slow flames according to traditional Kolhapuri recipes. Perfect for authentic spicy curries and gravies.",
+    "shortDescription": "Traditional spicy Kolhapuri onion & garlic spice blend.",
+    "price": 160,
+    "originalPrice": 190,
+    "weight": "250g",
+    "category": "Masala",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "No Added Preservatives"
+    ],
+    "ingredients": [
+      "Red Chillies",
+      "Garlic",
+      "Onion",
+      "Coriander",
+      "Cumin",
+      "Spices"
+    ],
+    "images": [
+      "/images/products/kolhapuri-kanda-lasun-masala.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 42,
+    "tags": [
+      "kolhapuri",
+      "spicy",
+      "masala",
+      "curry",
+      "western maharashtra"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 100
+  },
+  {
+    "name": "Konkan Special Mango Pickle (Kairi Lonche)",
+    "slug": "konkan-special-mango-pickle",
+    "description": "Sun-dried raw Rajapuri mangoes blended with cold-pressed mustard oil, fenugreek, and aromatic Maharashtrian spices. Aged naturally for rich flavor.",
+    "shortDescription": "Traditional sun-aged raw mango pickle in mustard oil.",
+    "price": 240,
+    "originalPrice": 280,
+    "weight": "500g",
+    "category": "Pickles",
+    "region": "Konkan",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Traditional Recipe"
+    ],
+    "ingredients": [
+      "Raw Mango",
+      "Mustard Oil",
+      "Fenugreek",
+      "Salt",
+      "Red Chilli",
+      "Turmeric"
+    ],
+    "images": [
+      "/images/products/mango-pickle.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 58,
+    "tags": [
+      "mango pickle",
+      "lonche",
+      "konkan",
+      "medium spice"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 80
+  },
+  {
+    "name": "Crispy Baked Bajra Puri (Healthy Snack)",
+    "slug": "crispy-baked-bajra-puri",
+    "description": "Nutritious pearl millet crispies roasted with sesame seeds and rock salt. A low-calorie evening snack ideal for health-conscious food lovers.",
+    "shortDescription": "Roasted pearl millet crispies with sesame seeds.",
+    "price": 140,
+    "originalPrice": 165,
+    "weight": "200g",
+    "category": "Healthy",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Gluten-Free",
+      "Low Oil"
+    ],
+    "ingredients": [
+      "Bajra Flour",
+      "Sesame Seeds",
+      "Rock Salt",
+      "Cumin",
+      "Cold-Pressed Oil"
+    ],
+    "images": [
+      "/images/products/bajra-puri.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 29,
+    "tags": [
+      "healthy",
+      "bajra",
+      "gluten free",
+      "mild",
+      "snack"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 65
+  },
+  {
+    "name": "Traditional Puran Poli (Pack of 6)",
+    "slug": "traditional-puran-poli-pack",
+    "description": "Soft whole wheat flatbreads stuffed with slow-cooked chana dal, jaggery, cardamom, and nutmeg, smeared with pure A2 cow ghee.",
+    "shortDescription": "Soft flatbread stuffed with jaggery and chana dal.",
+    "price": 320,
+    "originalPrice": 360,
+    "weight": "400g",
+    "category": "Sweets",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Made with A2 Ghee",
+      "Pure Jaggery"
+    ],
+    "ingredients": [
+      "Whole Wheat Flour",
+      "Chana Dal",
+      "Jaggery",
+      "Cardamom",
+      "Nutmeg",
+      "Pure Ghee"
+    ],
+    "images": [
+      "/images/products/PORAN POLI.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 74,
+    "tags": [
+      "puran poli",
+      "sweet",
+      "festive",
+      "ghee",
+      "traditional"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 45
+  },
+  {
+    "name": "Vidarbha Saoji Special Curry Masala",
+    "slug": "vidarbha-saoji-special-masala",
+    "description": "Fiery multi-spice ground powder from Nagpur/Vidarbha region. Features roasted black stone flower (dagad phool), dry coconut, and red chillies.",
+    "shortDescription": "Fiery roasted Saoji spice mix for intense curries.",
+    "price": 210,
+    "originalPrice": 250,
+    "weight": "250g",
+    "category": "Masala",
+    "region": "Vidarbha",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "Ultra Fiery"
+    ],
+    "ingredients": [
+      "Dagad Phool",
+      "Red Chillies",
+      "Dry Coconut",
+      "Black Cardamom",
+      "Cinnamon",
+      "Cloves"
+    ],
+    "images": [
+      "/images/products/saoji-masala.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 35,
+    "tags": [
+      "saoji",
+      "vidarbha",
+      "fiery",
+      "spicy",
+      "masala"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 50
+  },
+  {
+    "name": "Marathwada Garlic Chutney (Lassun Chutney)",
+    "slug": "marathwada-garlic-chutney",
+    "description": "Coarsely pounded dry garlic chutney mixed with spicy Byadgi chillies and roasted sesame seeds. The ultimate flavor enhancer for every meal.",
+    "shortDescription": "Coarse dry garlic & chilli chutney powder.",
+    "price": 120,
+    "originalPrice": 150,
+    "weight": "200g",
+    "category": "Pickles",
+    "region": "Marathwada",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "No Preservatives"
+    ],
+    "ingredients": [
+      "Garlic",
+      "Red Chilli",
+      "Sesame Seeds",
+      "Salt",
+      "Groundnut Oil"
+    ],
+    "images": [
+      "/images/products/garlic-chutney.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 51,
+    "tags": [
+      "garlic chutney",
+      "marathwada",
+      "spicy",
+      "chutney"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 90
+  },
+  {
+    "name": "Konkan Coconut Jaggery Ladoo (Pack of 10)",
+    "slug": "konkan-coconut-jaggery-ladoo",
+    "description": "Freshly grated Konkan coconut roasted in cow ghee and bound with organic brown jaggery and fragrant cardamom powder.",
+    "shortDescription": "Fresh coconut & jaggery sweet ladoos.",
+    "price": 280,
+    "originalPrice": 320,
+    "weight": "350g",
+    "category": "Sweets",
+    "region": "Konkan",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Organic Jaggery"
+    ],
+    "ingredients": [
+      "Grated Coconut",
+      "Organic Jaggery",
+      "Pure Ghee",
+      "Cardamom"
+    ],
+    "images": [
+      "/images/products/coconut laddu.webp"
+    ],
+    "rating": 4.7,
+    "reviewCount": 24,
+    "tags": [
+      "coconut ladoo",
+      "konkan",
+      "sweet",
+      "jaggery"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 60
+  },
+  {
+    "name": "Crunchy Bhajani Chakali (Traditional Snack)",
+    "slug": "crunchy-bhajani-chakali",
+    "description": "Spiral crispy savories prepared from traditional roasted multigrain flour (Bhajani) seasoned with carom seeds (ajwain) and white sesame.",
+    "shortDescription": "Crispy roasted multigrain spiral savories.",
+    "price": 180,
+    "originalPrice": 210,
+    "weight": "300g",
+    "category": "Snacks",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Multigrain"
+    ],
+    "ingredients": [
+      "Rice",
+      "Chana Dal",
+      "Urad Dal",
+      "Sesame Seeds",
+      "Ajwain",
+      "Red Chilli",
+      "Vegetable Oil"
+    ],
+    "images": [
+      "/images/products/bhajani-chakali.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 88,
+    "tags": [
+      "chakali",
+      "chakli",
+      "bhajani",
+      "snacks",
+      "western maharashtra"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 120
+  },
+  {
+    "name": "Pune Special Bakarwadi (Crispy Roll Snacks)",
+    "slug": "pune-special-bakarwadi",
+    "description": "Pinwheel fried pastry rolls stuffed with a spicy, sweet, and tangy coconut-poppy seed masala filling. Famous Puneri afternoon snack.",
+    "shortDescription": "Crispy pinwheel rolls with sweet & spicy filling.",
+    "price": 220,
+    "originalPrice": 250,
+    "weight": "400g",
+    "category": "Bakery",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg"
+    ],
+    "ingredients": [
+      "Gram Flour",
+      "Wheat Flour",
+      "Coconut",
+      "Poppy Seeds",
+      "Tamarind",
+      "Spices"
+    ],
+    "images": [
+      "/images/products/bakarwadi.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 95,
+    "tags": [
+      "bakarwadi",
+      "bakharwadi",
+      "pune",
+      "snack",
+      "bakery"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 110
+  },
+  {
+    "name": "Organic Kokum Agal (Sour Extract)",
+    "slug": "organic-kokum-agal",
+    "description": "Pure unsweetened extract of wild Garcinia indica (Kokum) fruits from Ratnagiri, Konkan. Ideal for preparing refreshingly digestive Solkadhi.",
+    "shortDescription": "Pure unsweetened Konkan kokum fruit juice extract.",
+    "price": 190,
+    "originalPrice": 220,
+    "weight": "500ml",
+    "category": "Healthy",
+    "region": "Konkan",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Sugar-Free",
+      "Digestive"
+    ],
+    "ingredients": [
+      "Wild Kokum Fruit Juice",
+      "Salt"
+    ],
+    "images": [
+      "/images/products/kokum-agal.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 40,
+    "tags": [
+      "kokum",
+      "solkadhi",
+      "konkan",
+      "healthy",
+      "digestive"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 70
+  },
+  {
+    "name": "Spicy Ambadi Pickle (Sorrel Leaves Pickle)",
+    "slug": "spicy-ambadi-pickle",
+    "description": "Tangy and pungent pickle prepared from fresh sorrel (Ambadi) leaves, red chillies, and garlic, popular in rural Vidarbha and Marathwada.",
+    "shortDescription": "Tangy sorrel leaves pickle with pungent garlic.",
+    "price": 175,
+    "originalPrice": 200,
+    "weight": "300g",
+    "category": "Pickles",
+    "region": "Vidarbha",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "High Fiber"
+    ],
+    "ingredients": [
+      "Ambadi Leaves",
+      "Garlic",
+      "Red Chilli",
+      "Mustard Seeds",
+      "Oil"
+    ],
+    "images": [
+      "/images/products/ambadi pickle.webp"
+    ],
+    "rating": 4.5,
+    "reviewCount": 18,
+    "tags": [
+      "ambadi",
+      "pickle",
+      "vidarbha",
+      "spicy"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 40
+  },
+  {
+    "name": "Golden Besan Ladoo with Almonds",
+    "slug": "golden-besan-ladoo-almonds",
+    "description": "Aromatic roasted roasted chickpea flour (besan) simmered with pure cow ghee, cardamom, and chopped almonds.",
+    "shortDescription": "Melt-in-mouth roasted besan and ghee sweets.",
+    "price": 360,
+    "originalPrice": 400,
+    "weight": "500g",
+    "category": "Sweets",
+    "region": "All Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Pure Ghee"
+    ],
+    "ingredients": [
+      "Gram Flour",
+      "Pure Ghee",
+      "Sugar",
+      "Cardamom",
+      "Almonds"
+    ],
+    "images": [
+      "/images/products/besan-ladoo.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 62,
+    "tags": [
+      "besan ladoo",
+      "sweet",
+      "ghee",
+      "festive"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 85
+  },
+  {
+    "name": "Special Malvani Fish Curry Masala",
+    "slug": "special-malvani-fish-curry-masala",
+    "description": "Authentic coastal Konkan spice blend made with 18 roasted spices including Bedgi chilli, star anise, and stone flower.",
+    "shortDescription": "Coastal Konkan 18-spice blend for authentic curries.",
+    "price": 195,
+    "originalPrice": 230,
+    "weight": "250g",
+    "category": "Masala",
+    "region": "Konkan",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Coastal Recipe"
+    ],
+    "ingredients": [
+      "Bedgi Chilli",
+      "Coriander",
+      "Cumin",
+      "Star Anise",
+      "Triphala",
+      "Black Pepper"
+    ],
+    "images": [
+      "/images/products/malvani-masala.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 44,
+    "tags": [
+      "malvani",
+      "masala",
+      "konkan",
+      "curry"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 75
+  },
+  {
+    "name": "Roasted Jowar Puffs (Healthy Namkeen)",
+    "slug": "roasted-jowar-puffs",
+    "description": "Light crunchy sorghum (jowar) pops tossed in Himalayan pink salt, curry leaves, and a touch of green chilli oil.",
+    "shortDescription": "Crunchy roasted sorghum pops with pink salt.",
+    "price": 130,
+    "originalPrice": 150,
+    "weight": "180g",
+    "category": "Healthy",
+    "region": "Marathwada",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Gluten-Free",
+      "Low Calorie"
+    ],
+    "ingredients": [
+      "Jowar Puffs",
+      "Himalayan Pink Salt",
+      "Curry Leaves",
+      "Cold-Pressed Peanut Oil"
+    ],
+    "images": [
+      "/images/products/roasted-jowar-puffs.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 22,
+    "tags": [
+      "jowar",
+      "healthy",
+      "gluten free",
+      "mild"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 90
+  },
+  {
+    "name": "Traditional Maharashtrian Gifting Box",
+    "slug": "traditional-maharashtrian-gifting-box",
+    "description": "A curated assortment containing Puran Poli (4 pcs), Bhajani Chakali (200g), Besan Ladoo (250g), and Kolhapuri Masala (100g) in a regal gift trunk.",
+    "shortDescription": "Grand festive gifting trunk with snacks & sweets.",
+    "price": 890,
+    "originalPrice": 999,
+    "weight": "1.2kg",
+    "category": "Traditional Specials",
+    "region": "All Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Festive Pack"
+    ],
+    "ingredients": [
+      "Assorted Traditional Ingredients"
+    ],
+    "images": [
+      "/images/products/gifting-box.jpg"
+    ],
+    "rating": 5,
+    "reviewCount": 31,
+    "tags": [
+      "gift",
+      "gifting",
+      "festive",
+      "traditional",
+      "box"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 30
+  },
+  {
+    "name": "Ratnagiri Alphonso Mango Pulp (Aamras 1L)",
+    "slug": "ratnagiri-alphonso-mango-pulp",
+    "description": "100% natural pulp of GI-tagged Ratnagiri Alphonso (Hapus) mangoes without added water or artificial flavorings.",
+    "shortDescription": "Pure 100% Hapus Alphonso mango pulp tin.",
+    "price": 450,
+    "originalPrice": 520,
+    "weight": "1 Litre",
+    "category": "Traditional Specials",
+    "region": "Konkan",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "No Preservatives"
+    ],
+    "ingredients": [
+      "Alphonso Mango Pulp",
+      "Minimal Cane Sugar"
+    ],
+    "images": [
+      "/images/products/alphonso-mango-pulp.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 67,
+    "tags": [
+      "hapus",
+      "alphonso",
+      "mango",
+      "aamras",
+      "konkan"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 50
+  },
+  {
+    "name": "Spicy Puneri Chivda (Flattened Rice Snacks)",
+    "slug": "spicy-puneri-chivda",
+    "description": "Crispy thin poha (flattened rice) tossed with roasted peanuts, cashews, dried coconut slices, green chillies, and mustard seeds.",
+    "shortDescription": "Crispy thin poha chivda with cashews & peanuts.",
+    "price": 150,
+    "originalPrice": 175,
+    "weight": "350g",
+    "category": "Snacks",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Low Oil"
+    ],
+    "ingredients": [
+      "Thin Poha",
+      "Peanuts",
+      "Cashews",
+      "Dry Coconut",
+      "Green Chillies",
+      "Turmeric"
+    ],
+    "images": [
+      "/images/products/spicy-puneri-chivda.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 41,
+    "tags": [
+      "chivda",
+      "poha",
+      "pune",
+      "snack"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 100
+  },
+  {
+    "name": "Maharashtrian Goda Masala (Aromatic Sweet Spice)",
+    "slug": "maharashtrian-goda-masala",
+    "description": "Non-spicy aromatic black spice mixture prepared with roasted sesame, dry coconut, stone flower, and cassia bark. Essential for Amti dal.",
+    "shortDescription": "Traditional fragrant black masala for daily Amti dal.",
+    "price": 170,
+    "originalPrice": 200,
+    "weight": "250g",
+    "category": "Masala",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Aromatic"
+    ],
+    "ingredients": [
+      "Coriander Seeds",
+      "Sesame Seeds",
+      "Dry Coconut",
+      "Dagad Phool",
+      "Cassia"
+    ],
+    "images": [
+      "/images/products/goda-masala.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 53,
+    "tags": [
+      "goda masala",
+      "amti",
+      "masala",
+      "mild"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 80
+  },
+  {
+    "name": "Authentic Sweet Chiroote (Pastry Layered Sweets)",
+    "slug": "authentic-sweet-chiroote",
+    "description": "Flaky multi-layered fried flour pastries dusted with powdered sugar and cardamom. Traditional festival specialty.",
+    "shortDescription": "Flaky layered pastry dusted with powdered cardamom sugar.",
+    "price": 260,
+    "originalPrice": 300,
+    "weight": "300g",
+    "category": "Sweets",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg"
+    ],
+    "ingredients": [
+      "Refined Wheat Flour",
+      "Ghee",
+      "Sugar",
+      "Cardamom"
+    ],
+    "images": [
+      "/images/products/chirote.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 19,
+    "tags": [
+      "chiroote",
+      "sweet",
+      "festive"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 40
+  },
+  {
+    "name": "Khamang Dhokla Mix (Instant Breakfast)",
+    "slug": "khamang-dhokla-mix",
+    "description": "Ready-to-cook steamed gram flour mix. Yields spongy, soft, juicy dhoklas in just 15 minutes.",
+    "shortDescription": "Ready mix for fluffy, spongy savory steamed cakes.",
+    "price": 110,
+    "originalPrice": 130,
+    "weight": "400g",
+    "category": "Bakery",
+    "region": "Pan-Indian",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Instant Mix"
+    ],
+    "ingredients": [
+      "Gram Flour",
+      "Citric Acid",
+      "Salt",
+      "Fruit Salt",
+      "Turmeric"
+    ],
+    "images": [
+      "/images/products/khamang-dhokla.jpg"
+    ],
+    "rating": 4.5,
+    "reviewCount": 33,
+    "tags": [
+      "dhokla",
+      "instant",
+      "breakfast",
+      "bakery"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 95
+  },
+  {
+    "name": "Vidarbha Spicy Chana Dal Fry Mix",
+    "slug": "vidarbha-spicy-chana-dal-fry",
+    "description": "Crispy fried split Bengal gram seasoned with bold chilli powder, asafoetida, and dry mango powder.",
+    "shortDescription": "Crunchy spicy fried Bengal gram namkeen.",
+    "price": 135,
+    "originalPrice": 160,
+    "weight": "250g",
+    "category": "Snacks",
+    "region": "Vidarbha",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "High Protein"
+    ],
+    "ingredients": [
+      "Chana Dal",
+      "Chilli Powder",
+      "Amchur",
+      "Hing",
+      "Oil",
+      "Salt"
+    ],
+    "images": [
+      "/images/products/chana-dal-fry.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 27,
+    "tags": [
+      "chana dal",
+      "vidarbha",
+      "spicy",
+      "snack"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 85
+  },
+  {
+    "name": "Sugar-Free Date & Dry Fruit Ladoo",
+    "slug": "sugar-free-date-dry-fruit-ladoo",
+    "description": "Energy balls crafted purely from minced Kimia dates, roasted almonds, cashews, pistachios, and poppy seeds.",
+    "shortDescription": "100% natural date & nut energy balls with zero sugar.",
+    "price": 420,
+    "originalPrice": 480,
+    "weight": "350g",
+    "category": "Healthy",
+    "region": "Pan-Indian",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "No Added Sugar",
+      "High Protein"
+    ],
+    "ingredients": [
+      "Dates",
+      "Almonds",
+      "Cashews",
+      "Pistachios",
+      "Poppy Seeds",
+      "Ghee"
+    ],
+    "images": [
+      "/images/products/date-dry-fruit-ladoo.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 46,
+    "tags": [
+      "sugar free",
+      "dates",
+      "dry fruit",
+      "healthy",
+      "ladoo"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 55
+  },
+  {
+    "name": "Ratnagiri Jackfruit Chips (Fanas Chips)",
+    "slug": "ratnagiri-jackfruit-chips",
+    "description": "Crispy sliced raw raw jackfruit fried in pure coconut oil and lightly salted with sea salt.",
+    "shortDescription": "Crunchy raw jackfruit crisps fried in coconut oil.",
+    "price": 195,
+    "originalPrice": 225,
+    "weight": "200g",
+    "category": "Snacks",
+    "region": "Konkan",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Coconut Oil Fried"
+    ],
+    "ingredients": [
+      "Raw Jackfruit",
+      "Coconut Oil",
+      "Sea Salt"
+    ],
+    "images": [
+      "/images/products/jackfruit-chips.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 38,
+    "tags": [
+      "jackfruit",
+      "fanas",
+      "konkan",
+      "chips"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 70
+  },
+  {
+    "name": "Traditional Solapuri Shenga Chutney (Peanut Chutney)",
+    "slug": "solapuri-shenga-chutney",
+    "description": "Famous dry roasted peanut chutney blended with red garlic and roasted chilli flakes. Solapur's culinary pride.",
+    "shortDescription": "Roasted groundnut & garlic spicy dry chutney.",
+    "price": 140,
+    "originalPrice": 165,
+    "weight": "250g",
+    "category": "Pickles",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "High Protein"
+    ],
+    "ingredients": [
+      "Peanuts",
+      "Garlic",
+      "Red Chilli Powder",
+      "Salt",
+      "Cumin"
+    ],
+    "images": [
+      "/images/products/solapuri-shenga-chutney.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 82,
+    "tags": [
+      "shenga chutney",
+      "peanut chutney",
+      "solapur",
+      "medium spice"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 100
+  },
+  {
+    "name": "Spicy Kunkeshwar Lemon Pickle (Limboo Lonche)",
+    "slug": "spicy-kunkeshwar-lemon-pickle",
+    "description": "Oil-free preserved yellow lemon pieces cured with rock salt, red chilli, and roasted bishop's weed (ajwain).",
+    "shortDescription": "Tangy oil-free digestive lemon pickle.",
+    "price": 165,
+    "originalPrice": 190,
+    "weight": "350g",
+    "category": "Pickles",
+    "region": "Konkan",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Oil-Free",
+      "Digestive"
+    ],
+    "ingredients": [
+      "Yellow Lemon",
+      "Rock Salt",
+      "Red Chilli",
+      "Ajwain",
+      "Asafoetida"
+    ],
+    "images": [
+      "/images/products/lemon pickel.jpeg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 26,
+    "tags": [
+      "lemon pickle",
+      "limboo lonche",
+      "konkan",
+      "digestive"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 60
+  },
+  {
+    "name": "Shankarpali Sweet & Savory (Festival Snacks)",
+    "slug": "shankarpali-sweet-savory",
+    "description": "Diamond-cut crispy bite-sized fried pastries with subtle sweetness and cardamom aroma.",
+    "shortDescription": "Diamond-shaped crispy sweet festival snacks.",
+    "price": 170,
+    "originalPrice": 200,
+    "weight": "350g",
+    "category": "Snacks",
+    "region": "All Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg"
+    ],
+    "ingredients": [
+      "Refined Wheat Flour",
+      "Pure Ghee",
+      "Sugar",
+      "Milk"
+    ],
+    "images": [
+      "/images/products/shankarpade.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 50,
+    "tags": [
+      "shankarpali",
+      "snack",
+      "sweet",
+      "festive"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 90
+  },
+  {
+    "name": "Organic Jaggery Powder (Gul Powder 1kg)",
+    "slug": "organic-jaggery-powder-1kg",
+    "description": "Unrefined chemical-free brown sugarcane jaggery powder produced naturally without clarifying agents.",
+    "shortDescription": "Pure unrefined sugarcane jaggery powder.",
+    "price": 180,
+    "originalPrice": 210,
+    "weight": "1kg",
+    "category": "Healthy",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Organic",
+      "Iron Rich"
+    ],
+    "ingredients": [
+      "100% Sugarcane Juice Concentrate"
+    ],
+    "images": [
+      "/images/products/jaggery-powder.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 39,
+    "tags": [
+      "jaggery",
+      "gul",
+      "organic",
+      "healthy"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 110
+  },
+  {
+    "name": "Maharashtrian Special Ukadiche Modak Kit",
+    "slug": "ukadiche-modak-kit",
+    "description": "Complete DIY kit containing Basmati rice flour (peeth), fresh grated coconut mix, organic jaggery, cardamom powder, and brass modak mold.",
+    "shortDescription": "DIY steamed Modak kit with brass mold.",
+    "price": 490,
+    "originalPrice": 560,
+    "weight": "800g",
+    "category": "Traditional Specials",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Ganesh Chaturthi Special"
+    ],
+    "ingredients": [
+      "Rice Flour",
+      "Coconut Jaggery Mix",
+      "Cardamom",
+      "Nutmeg"
+    ],
+    "images": [
+      "/images/products/ukadiche-modak.jpg"
+    ],
+    "rating": 5,
+    "reviewCount": 45,
+    "tags": [
+      "modak",
+      "ukadiche modak",
+      "ganesh chaturthi",
+      "kit",
+      "traditional"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 40
+  },
+  {
+    "name": "Spicy Kolhapuri Misal Farsan Mix",
+    "slug": "spicy-kolhapuri-misal-farsan",
+    "description": "Extra crunchy savory mix of fried gram flour noodles, roasted peanuts, and spicy puffed rice tailored specifically for topping Kolhapuri Misal.",
+    "shortDescription": "Extra crunchy spicy savory mix for Misal Pav.",
+    "price": 160,
+    "originalPrice": 185,
+    "weight": "400g",
+    "category": "Snacks",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "Spicy Crunch"
+    ],
+    "ingredients": [
+      "Gram Flour",
+      "Peanuts",
+      "Sev",
+      "Red Chilli",
+      "Vegetable Oil"
+    ],
+    "images": [
+      "/images/products/misal-farsan.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 63,
+    "tags": [
+      "misal farsan",
+      "kolhapuri",
+      "spicy",
+      "snack"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 95
+  },
+  {
+    "name": "Metkut Powder (Nutritious Grain Powder)",
+    "slug": "metkut-powder-grain-mix",
+    "description": "Comforting roasted mixture of rice, chana dal, urad dal, wheat, coriander, and turmeric. Tastes heavenly mixed with warm rice and ghee.",
+    "shortDescription": "Traditional roasted grain & spice comfort food powder.",
+    "price": 145,
+    "originalPrice": 170,
+    "weight": "250g",
+    "category": "Traditional Specials",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Comfort Food"
+    ],
+    "ingredients": [
+      "Roasted Rice",
+      "Chana Dal",
+      "Urad Dal",
+      "Wheat",
+      "Turmeric",
+      "Dry Ginger"
+    ],
+    "images": [
+      "/images/products/metkut-powder.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 28,
+    "tags": [
+      "metkut",
+      "comfort food",
+      "mild",
+      "traditional"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 65
+  },
+  {
+    "name": "Kaju Katli Special Sweet Box",
+    "slug": "kaju-katli-special-sweet-box",
+    "description": "Delicate diamond-shaped cashew fudge crafted from premium Goan cashew nuts and refined sugar with silver leaf topping.",
+    "shortDescription": "Melt-in-mouth premium Goan cashew fudge.",
+    "price": 550,
+    "originalPrice": 620,
+    "weight": "400g",
+    "category": "Sweets",
+    "region": "Konkan",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Premium Cashew"
+    ],
+    "ingredients": [
+      "Cashew Nuts",
+      "Sugar",
+      "Cardamom"
+    ],
+    "images": [
+      "/images/products/kaju-katli.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 71,
+    "tags": [
+      "kaju katli",
+      "sweet",
+      "cashew",
+      "festive"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 50
+  },
+  {
+    "name": "Nagpuri Orange Marmalade Jam",
+    "slug": "nagpuri-orange-marmalade-jam",
+    "description": "Zesty preserve cooked with juicy Nagpur orange pulp and peel shreds. Citrusy spread for breads and rotis.",
+    "shortDescription": "Zesty citrus preserve with Nagpur orange peel.",
+    "price": 210,
+    "originalPrice": 240,
+    "weight": "350g",
+    "category": "Bakery",
+    "region": "Vidarbha",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Real Fruit"
+    ],
+    "ingredients": [
+      "Nagpur Orange Pulp",
+      "Orange Rind",
+      "Cane Sugar",
+      "Pectin"
+    ],
+    "images": [
+      "/images/products/orange-marmalade.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 20,
+    "tags": [
+      "orange jam",
+      "nagpur",
+      "vidarbha",
+      "marmalade"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 55
+  },
+  {
+    "name": "Spicy Stuffed Red Chilli Pickle (Bharwa Lal Mirch)",
+    "slug": "spicy-stuffed-red-chilli-pickle",
+    "description": "Whole thick red chillies stuffed with aromatic roasted fennel, mustard, amchur, and mustard oil.",
+    "shortDescription": "Whole red chillies stuffed with pungent roasted spices.",
+    "price": 230,
+    "originalPrice": 270,
+    "weight": "400g",
+    "category": "Pickles",
+    "region": "Pan-Indian",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg",
+      "Spicy Lover"
+    ],
+    "ingredients": [
+      "Red Chillies",
+      "Fennel Seeds",
+      "Mustard Seeds",
+      "Amchur",
+      "Mustard Oil"
+    ],
+    "images": [
+      "/images/products/red-chilli-pickle.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 34,
+    "tags": [
+      "bharwa mirch",
+      "red chilli pickle",
+      "spicy"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 45
+  },
+  {
+    "name": "Roasted Flaxseed Chutney (Jawas Chutney)",
+    "slug": "roasted-flaxseed-jawas-chutney",
+    "description": "Omega-3 rich roasted brown flaxseeds ground with garlic, red chillies, and cumin. Healthy superfood condiment.",
+    "shortDescription": "Omega-3 rich roasted flaxseed & garlic powder.",
+    "price": 155,
+    "originalPrice": 180,
+    "weight": "200g",
+    "category": "Healthy",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Omega-3 Rich",
+      "Keto Friendly"
+    ],
+    "ingredients": [
+      "Flaxseeds (Jawas)",
+      "Garlic",
+      "Red Chilli",
+      "Cumin",
+      "Rock Salt"
+    ],
+    "images": [
+      "/images/products/flaxseed-chutney.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 36,
+    "tags": [
+      "flaxseed",
+      "jawas",
+      "healthy",
+      "superfood"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 75
+  },
+  {
+    "name": "Traditional Anarse (Jaggery Rice Sweets)",
+    "slug": "traditional-anarse-jaggery-sweets",
+    "description": "Crispy golden fried sweet disks made from soaked rice dough fermented with jaggery and crusted with poppy seeds.",
+    "shortDescription": "Crispy fermented rice & jaggery sweet disks.",
+    "price": 290,
+    "originalPrice": 330,
+    "weight": "350g",
+    "category": "Sweets",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "Poppy Crusted"
+    ],
+    "ingredients": [
+      "Soaked Rice",
+      "Jaggery",
+      "Poppy Seeds",
+      "Ghee"
+    ],
+    "images": [
+      "/images/products/anarase.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 29,
+    "tags": [
+      "anarse",
+      "sweet",
+      "diwali",
+      "festive"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 35
+  },
+  {
+    "name": "Konkan Raw Mango Chunda (Sweet Mango Preserve)",
+    "slug": "konkan-raw-mango-chunda",
+    "description": "Grated raw mango slow-cooked in sugar syrup infused with cumin seeds, roasted cloves, and mild red chilli.",
+    "shortDescription": "Sweet & tangy grated mango preserve with cumin.",
+    "price": 220,
+    "originalPrice": 250,
+    "weight": "400g",
+    "category": "Pickles",
+    "region": "Konkan",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "Sweet & Tangy"
+    ],
+    "ingredients": [
+      "Raw Mango",
+      "Sugar",
+      "Cumin Seeds",
+      "Red Chilli",
+      "Salt"
+    ],
+    "images": [
+      "/images/products/mango chunda.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 52,
+    "tags": [
+      "chunda",
+      "mango pickle",
+      "sweet pickle",
+      "konkan"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 65
+  },
+  {
+    "name": "Spicy Kanda Poha Premix (Breakfast in 5 Mins)",
+    "slug": "spicy-kanda-poha-premix",
+    "description": "Instant poha mix pre-seasoned with dehydrated onions, peanuts, mustard, curry leaves, and green chillies. Just add hot water.",
+    "shortDescription": "Instant onion flattened rice breakfast mix.",
+    "price": 125,
+    "originalPrice": 145,
+    "weight": "300g",
+    "category": "Snacks",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Medium",
+    "dietaryTags": [
+      "Pure Veg",
+      "Instant Breakfast"
+    ],
+    "ingredients": [
+      "Poha",
+      "Dehydrated Onion",
+      "Peanuts",
+      "Mustard",
+      "Curry Leaves",
+      "Turmeric"
+    ],
+    "images": [
+      "/images/products/kanda poha.jpg"
+    ],
+    "rating": 4.6,
+    "reviewCount": 30,
+    "tags": [
+      "poha",
+      "kanda poha",
+      "instant",
+      "snack"
+    ],
+    "isPopular": false,
+    "isBestSeller": false,
+    "stock": 80
+  },
+  {
+    "name": "Maharashtrian Special Thalipeeth Bhajani",
+    "slug": "maharashtrian-thalipeeth-bhajani-flour",
+    "description": "Special multi-grain roasted flour mix (rice, wheat, jowar, bajra, chana dal, coriander seeds). Makes delicious spiced flatbreads.",
+    "shortDescription": "Roasted multi-grain flour mix for savory flatbreads.",
+    "price": 175,
+    "originalPrice": 200,
+    "weight": "500g",
+    "category": "Traditional Specials",
+    "region": "Western Maharashtra",
+    "spiceLevel": "Mild",
+    "dietaryTags": [
+      "Pure Veg",
+      "High Fiber",
+      "Multigrain"
+    ],
+    "ingredients": [
+      "Jowar",
+      "Bajra",
+      "Wheat",
+      "Rice",
+      "Chana Dal",
+      "Coriander Seeds"
+    ],
+    "images": [
+      "/images/products/Bhajaniche-Thalipeeth-4.jpg"
+    ],
+    "rating": 4.9,
+    "reviewCount": 57,
+    "tags": [
+      "thalipeeth",
+      "bhajani",
+      "flour",
+      "traditional"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 85
+  },
+  {
+    "name": "Pure A2 Gir Cow Ghee (500ml Jar)",
+    "slug": "pure-a2-gir-cow-ghee-500ml",
+    "description": "Hand-churned Vedic Bilona method ghee prepared from pure A2 milk of free-grazing Gir cows.",
+    "shortDescription": "Traditional Bilona hand-churned A2 Gir cow ghee.",
+    "price": 780,
+    "originalPrice": 880,
+    "weight": "500ml",
+    "category": "Healthy",
+    "region": "Western Maharashtra",
+    "spiceLevel": "None",
+    "dietaryTags": [
+      "Pure Veg",
+      "A2 Milk",
+      "Bilona Method"
+    ],
+    "ingredients": [
+      "100% A2 Cow Milk Fat"
+    ],
+    "images": [
+      "/images/products/GHEE.webp"
+    ],
+    "rating": 5,
+    "reviewCount": 89,
+    "tags": [
+      "ghee",
+      "a2 ghee",
+      "bilona",
+      "healthy",
+      "gir cow"
+    ],
+    "isPopular": true,
+    "isBestSeller": true,
+    "stock": 40
+  },
+  {
+    "name": "Spicy Garlic Sev Namkeen",
+    "slug": "spicy-garlic-sev-namkeen",
+    "description": "Crispy fine gram flour strands heavily infused with fresh crushed garlic paste and red chilli powder.",
+    "shortDescription": "Crispy garlicky gram flour noodles namkeen.",
+    "price": 140,
+    "originalPrice": 165,
+    "weight": "300g",
+    "category": "Snacks",
+    "region": "Marathwada",
+    "spiceLevel": "Spicy",
+    "dietaryTags": [
+      "Pure Veg"
+    ],
+    "ingredients": [
+      "Gram Flour",
+      "Garlic",
+      "Red Chilli",
+      "Asafoetida",
+      "Oil",
+      "Salt"
+    ],
+    "images": [
+      "/images/products/garlic sev namkin.webp"
+    ],
+    "rating": 4.7,
+    "reviewCount": 44,
+    "tags": [
+      "garlic sev",
+      "sev",
+      "spicy",
+      "snack"
+    ],
+    "isPopular": true,
+    "isBestSeller": false,
+    "stock": 95
+  }
+]
