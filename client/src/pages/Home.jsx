@@ -8,7 +8,7 @@ import { productService } from '../services/productService';
 const categories = [
   { name: 'Snacks', icon: '🥨', tag: 'Chivda & Bhajani Chakali', image: '/images/products/bhajani-chakali.jpg' },
   { name: 'Pickles', icon: '🫙', tag: 'Sun-Aged Mango & Garlic', image: '/images/products/mango-pickle.jpg' },
-  { name: 'Sweets', icon: '🍯', tag: 'Puran Poli & Besan Ladoo', image: '/images/products/PORAN POLI.jpg' },
+  { name: 'Sweets', icon: '🍯', tag: 'Puran Poli & Besan Ladoo', image: '/images/products/poran-poli.jpg' },
   { name: 'Bakery', icon: '🍞', tag: 'Puneri Bakarwadi & Rolls', image: '/images/categories/bakery.jpg' },
   { name: 'Masala', icon: '🌶️', tag: 'Kolhapuri & Malvani Blends', image: '/images/products/kolhapuri-masala.jpg' },
   { name: 'Healthy', icon: '🌾', tag: 'Bajra Crispies & Jowar Pops', image: '/images/products/spicy-puneri-chivda.jpg' },
