@@ -66,6 +66,10 @@ const CartPage = () => {
                         src={item.product?.images && item.product?.images.length > 0 ? item.product.images[0] : '/images/products/kolhapuri-masala.jpg'}
                         alt={product.name}
                         className="w-16 h-16 rounded-xl object-cover border border-warmbg-accent flex-shrink-0 bg-warmbg-card"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/images/products/kolhapuri-masala.jpg';
+                        }}
                       />
                       <div className="min-w-0 flex-1">
                         <Link to={`/product/${product.slug}`} className="font-display font-bold text-sm text-charcoal hover:text-brand-600 transition-colors block truncate">

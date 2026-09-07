@@ -150,6 +150,10 @@ const ProductDetail = () => {
               src={product.images && product.images.length > 0 ? product.images[0] : '/images/products/kolhapuri-masala.jpg'}
               alt={product.name}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/images/products/kolhapuri-masala.jpg';
+              }}
             />
             {product.isBestSeller && (
               <span className="absolute top-4 left-4 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
