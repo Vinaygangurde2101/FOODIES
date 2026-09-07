@@ -143,7 +143,26 @@ npm run build
 
 ---
 
-## 10. Known Limitations & Future Roadmap
+## 10. Deployment Guide (Vercel)
+
+### Step 1: Import Project to Vercel
+1. Log in to your [Vercel Dashboard](https://vercel.com).
+2. Click **"Add New..."** -> **"Project"**.
+3. Import your GitHub repository: `Vinaygangurde2101/FOODIES`.
+
+### Step 2: Configure Project Settings
+- **Framework Preset**: Vite
+- **Root Directory**: `client`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+### Step 3: Set Environment Variables
+Add the following Environment Variable in Vercel:
+- `VITE_API_BASE_URL` = `https://<your-backend-domain>/api` (or relative `/api` if deployed together)
+
+---
+
+## 11. Known Limitations & Future Roadmap
 
 - **Known Limitations**: Payment processing uses simulated "Demo Payment" / Cash on Delivery for assessment safety.
 - **Future Roadmap**: Sub-regional cooking kit bundles, automated monthly recurring staple subscriptions (ghee, chutneys), and AI recipe pairing.
@@ -151,4 +170,4 @@ npm run build
 ---
 
 ## Author
-**Senior Full Stack Engineer Assessment Candidate** — Full Stack MERN Prototype Presentation.
+**Vinay Gangurde** — Full Stack MERN Prototype Presentation.
