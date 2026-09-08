@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { orderService } from '../services/orderService';
 
 const CheckoutPage = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
 
