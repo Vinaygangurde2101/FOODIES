@@ -5,7 +5,7 @@ const connectDB = async () => {
   const uri = process.env.MONGODB_URI;
 
   if (!uri && isVercel) {
-    console.log('⚡ Vercel Serverless Mode: MONGODB_URI not set. Operating in high-performance seed JSON fallback mode.');
+    console.log('⚡ Vercel Serverless Mode: MONGODB_URI not set. Operating in high-performance seed fallback mode.');
     return;
   }
 
@@ -16,7 +16,7 @@ const connectDB = async () => {
     await mongoose.connect(targetUri, { serverSelectionTimeoutMS: 800 });
     console.log(`MongoDB Connected successfully to ${mongoose.connection.host}`);
   } catch (error) {
-    console.warn(`MongoDB connection unavailable (${error.message}). Serving seamless in-memory fallback.`);
+    console.warn(`MongoDB connection unavailable (${error.message}). Serving seamless seed JSON fallback.`);
 
     if (!isVercel) {
       try {

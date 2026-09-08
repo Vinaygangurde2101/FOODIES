@@ -1,4 +1,3 @@
-const Product = require('../models/Product');
 const seedProductsData = require('../seed/seedData.json');
 
 // Helper to filter seedData in-memory if DB is disconnected/empty
