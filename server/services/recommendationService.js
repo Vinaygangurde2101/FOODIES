@@ -2,14 +2,18 @@ const Product = require('../models/Product');
 const path = require('path');
 const fs = require('fs');
 
-// Seed products cache fallback
+// Seed products cache fallback with guaranteed _id properties
 let seedProductsCache = null;
 const getSeedProducts = () => {
   if (!seedProductsCache) {
     try {
       const seedPath = path.join(__dirname, '../seed/seedData.json');
       if (fs.existsSync(seedPath)) {
-        seedProductsCache = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
+        const raw = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
+        seedProductsCache = raw.map((p, idx) => ({
+          ...p,
+          _id: p._id || p.slug || `seed-prod-${idx}`
+        }));
       } else {
         seedProductsCache = [];
       }
@@ -24,7 +28,9 @@ const getSeedProducts = () => {
 const getAvailableProducts = async (filter = {}) => {
   try {
     const products = await Product.find(filter).lean();
-    if (products && products.length > 0) return products;
+    if (products && products.length > 0) {
+      return products.map(p => ({ ...p, _id: p._id.toString() }));
+    }
   } catch (err) {
     console.warn('MongoDB query failed in recommendationService, using seed fallback:', err.message);
   }
@@ -35,90 +41,158 @@ const getAvailableProducts = async (filter = {}) => {
   }
   if (filter._id && filter._id.$nin) {
     const ids = filter._id.$nin.map(id => id.toString());
-    items = items.filter(p => !ids.includes(p._id.toString()));
+    items = items.filter(p => !ids.includes((p._id || '').toString()));
   }
   return items;
 };
 
-// Craving to product category mapping
-const CRAVING_CATEGORY_MAP = {
-  'Spicy': ['Pickles', 'Masala', 'Snacks'],
-  'Sweet': ['Sweets', 'Bakery', 'Traditional Specials'],
-  'Snacks': ['Snacks', 'Bakery', 'Healthy'],
-  'Healthy': ['Healthy', 'Snacks'],
-  'Traditional': ['Traditional Specials', 'Sweets', 'Pickles'],
-  'Gift': ['Traditional Specials', 'Sweets']
+// Craving to category & tag keywords mapping
+const CRAVING_MAP = {
+  'Spicy': {
+    categories: ['Pickles', 'Masala', 'Snacks'],
+    keywords: ['spicy', 'kolhapuri', 'curry', 'chilli', 'pickle', 'lonche', 'masala']
+  },
+  'Sweet': {
+    categories: ['Sweets', 'Bakery', 'Traditional Specials'],
+    keywords: ['sweet', 'ladoo', 'puran', 'modak', 'ghee', 'jaggery', 'chikki']
+  },
+  'Snacks': {
+    categories: ['Snacks', 'Bakery', 'Healthy'],
+    keywords: ['chivda', 'bakarwadi', 'chakali', 'puri', 'snack', 'poha', 'crunchy']
+  },
+  'Healthy': {
+    categories: ['Healthy', 'Snacks'],
+    keywords: ['healthy', 'millet', 'jowar', 'bajra', 'seeds', 'a2 ghee', 'gluten-free', 'baked']
+  },
+  'Traditional': {
+    categories: ['Traditional Specials', 'Masala', 'Sweets', 'Pickles'],
+    keywords: ['traditional', 'authentic', 'heritage', 'recipe', 'konkan', 'vidarbha']
+  },
+  'Gift': {
+    categories: ['Traditional Specials', 'Sweets', 'Bakery'],
+    keywords: ['gift', 'box', 'special', 'trunk', 'assorted', 'premium']
+  }
 };
 
-// Calculate product recommendation scores based on user taste preferences
-const getSmartFinderRecommendations = async (answers, limit = 8) => {
+// Advanced Taste Matching Engine
+const getSmartFinderRecommendations = async (answers, limit = 12) => {
   const { foodType, budget, spiceLevel, region } = answers;
   
   const allProducts = await getAvailableProducts({ stock: { $gt: 0 } });
-  const targetCategories = CRAVING_CATEGORY_MAP[foodType] || ['Snacks', 'Sweets', 'Pickles'];
+  if (!allProducts || allProducts.length === 0) return [];
+
+  const cravingInfo = CRAVING_MAP[foodType] || {
+    categories: ['Snacks', 'Sweets', 'Pickles', 'Masala'],
+    keywords: ['tasty', 'flavor', 'snack']
+  };
 
   const scoredProducts = allProducts.map(product => {
     let score = 0;
     const reasons = [];
 
-    // Category weight
-    if (targetCategories.includes(product.category)) {
-      score += 30;
+    // 1. Craving Category & Keyword Match (Max 40 pts)
+    const matchesCategory = cravingInfo.categories.includes(product.category);
+    const prodText = `${product.name} ${product.description || ''} ${(product.tags || []).join(' ')}`.toLowerCase();
+    const keywordMatches = cravingInfo.keywords.filter(kw => prodText.includes(kw));
+
+    if (matchesCategory) {
+      score += 25;
       reasons.push(`Matches your ${foodType || 'selected'} craving`);
     }
+    if (keywordMatches.length > 0) {
+      score += Math.min(15, keywordMatches.length * 5);
+      if (!matchesCategory) {
+        reasons.push(`Features ${keywordMatches[0]} flavor profile`);
+      }
+    }
 
-    // Spice level weight
-    if (spiceLevel && spiceLevel !== "Doesn't matter") {
+    // 2. Spice Level Weighting (Max 20 pts)
+    if (spiceLevel && spiceLevel !== "Doesn't matter" && spiceLevel !== "Any") {
       if (product.spiceLevel === spiceLevel) {
+        score += 20;
+        reasons.push(`Perfect ${spiceLevel} heat level match`);
+      } else if (
+        (spiceLevel === 'Medium' && (product.spiceLevel === 'Mild' || product.spiceLevel === 'Spicy')) ||
+        (spiceLevel === 'Spicy' && product.spiceLevel === 'Medium') ||
+        (spiceLevel === 'Mild' && product.spiceLevel === 'Medium')
+      ) {
         score += 10;
-        reasons.push(`Matches your ${spiceLevel} spice level preference`);
+        reasons.push(`Balanced spice alternative (${product.spiceLevel})`);
       }
     } else {
-      score += 5;
+      score += 15;
+      reasons.push('Versatile spice profile for all palates');
     }
 
-    // Budget range check
+    // 3. Budget Range Check (Max 20 pts)
     const price = product.price;
-    if (budget === 'under200' && price <= 200) {
-      score += 20;
-      reasons.push('Fits comfortably within your under ₹200 budget');
-    } else if (budget === '200-500' && price > 200 && price <= 500) {
-      score += 20;
-      reasons.push('Within your ₹200–₹500 budget');
-    } else if (budget === '500plus' && price > 500) {
-      score += 20;
-      reasons.push('Fits your premium budget preference');
-    }
-
-    // Region weight
-    if (region && region !== 'Any') {
-      if (region === 'Maharashtrian' && ['Konkan', 'Vidarbha', 'Marathwada', 'Western Maharashtra', 'All Maharashtra'].includes(product.region)) {
+    if (budget === 'under200') {
+      if (price <= 200) {
+        score += 20;
+        reasons.push(`Budget friendly (₹${price})`);
+      } else if (price <= 250) {
         score += 10;
-        reasons.push('Authentic Maharashtrian flavor');
-      } else if (product.region === region) {
-        score += 10;
-        reasons.push(`Specialty from ${product.region}`);
+        reasons.push(`Close to budget (₹${price})`);
       }
+    } else if (budget === '200-500') {
+      if (price >= 180 && price <= 500) {
+        score += 20;
+        reasons.push(`Fits your ₹200–₹500 budget (₹${price})`);
+      } else if (price < 180) {
+        score += 12;
+        reasons.push(`Under your budget limit (₹${price})`);
+      }
+    } else if (budget === '500plus') {
+      if (price >= 300) {
+        score += 20;
+        reasons.push(`Premium quality product (₹${price})`);
+      } else {
+        score += 10;
+        reasons.push(`Value pick (₹${price})`);
+      }
+    } else {
+      score += 15;
     }
 
-    // Rating & Bestseller boost
+    // 4. Regional Authenticity Match (Max 15 pts)
+    if (region && region !== 'Any') {
+      const maharashtrianRegions = ['Konkan', 'Vidarbha', 'Marathwada', 'Western Maharashtra', 'All Maharashtra', 'Pune', 'Kolhapur'];
+      if (region === 'Maharashtrian' && maharashtrianRegions.includes(product.region)) {
+        score += 15;
+        reasons.push(`Authentic ${product.region} recipe`);
+      } else if (product.region === region) {
+        score += 15;
+        reasons.push(`Regional specialty from ${product.region}`);
+      }
+    } else {
+      score += 10;
+    }
+
+    // 5. Popularity & Customer Quality Boost (Max 15 pts)
     if (product.rating >= 4.7) {
-      score += 5;
-      reasons.push('Highly rated by food lovers (4.7+ ★)');
+      score += 8;
+      reasons.push(`Top customer rating (${product.rating}★)`);
     }
     if (product.isBestSeller || product.isPopular) {
-      score += 5;
+      score += 7;
       reasons.push('Customer Bestseller');
     }
 
+    // Normalized Match Percentage (guaranteed 72% to 99% for top items)
+    const matchPercentage = Math.min(99, Math.max(72, Math.round(55 + (score / 110) * 44)));
+
     return {
       ...product,
-      matchScore: Math.min(100, Math.round((score / 80) * 100)),
-      recommendationReasons: reasons
+      matchScore: matchPercentage,
+      rawScore: score,
+      recommendationReasons: reasons.length > 0 ? reasons : ['Matches your food discovery preferences']
     };
   });
 
-  scoredProducts.sort((a, b) => b.matchScore - a.matchScore);
+  // Sort by calculated match score
+  scoredProducts.sort((a, b) => b.rawScore - a.rawScore);
+
+  // Return top results
   return scoredProducts.slice(0, limit);
 };
 
