@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({
     status: 'OK',
     service: 'Naik Foods API',
@@ -33,12 +33,12 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/products', require('./routes/productRoutes'));
-app.use('/api/recommendations', require('./routes/recommendationRoutes'));
-app.use('/api/cart', require('./routes/cartRoutes'));
-app.use('/api/reviews', require('./routes/reviewRoutes'));
-app.use('/api/orders', require('./routes/orderRoutes'));
+app.use(['/api/auth', '/auth'], require('./routes/authRoutes'));
+app.use(['/api/products', '/products'], require('./routes/productRoutes'));
+app.use(['/api/recommendations', '/recommendations'], require('./routes/recommendationRoutes'));
+app.use(['/api/cart', '/cart'], require('./routes/cartRoutes'));
+app.use(['/api/reviews', '/reviews'], require('./routes/reviewRoutes'));
+app.use(['/api/orders', '/orders'], require('./routes/orderRoutes'));
 
 app.use((req, res, next) => {
   res.status(404).json({ success: false, message: `Route not found - ${req.originalUrl}` });
