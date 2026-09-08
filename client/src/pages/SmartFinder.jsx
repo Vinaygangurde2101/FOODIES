@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowRight, RotateCcw, CheckCircle2, Flame, Wallet, MapPin, SlidersHorizontal, ShoppingBag, Award } from 'lucide-react';
+import { Sparkles, ArrowRight, RotateCcw, CheckCircle2, SlidersHorizontal, Award } from 'lucide-react';
 import ProductCard from '../components/product/ProductCard';
 import { ProductGridSkeleton } from '../components/common/LoadingSkeleton';
 import { recommendationService } from '../services/recommendationService';
-import { useCart } from '../context/CartContext';
+import { computeTasteRecommendations } from '../services/recommendationEngine';
 
 const stepsData = [
   {
@@ -70,12 +70,6 @@ const SmartFinder = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
-  const { addToCart } = useCart();
-
-  // Instant initial recommendation fetch on mount if answers are set
-  useEffect(() => {
-    // Submit default quiz on mount to guarantee immediate results if needed
-  }, []);
 
   const currentStepInfo = stepsData[currentStep];
 
@@ -97,20 +91,24 @@ const SmartFinder = () => {
   };
 
   const submitQuiz = async (finalAnswers) => {
+    setCompleted(true);
+    setLoading(true);
+
+    // 1. Instant local computation (0ms response guarantee)
+    const localMatches = computeTasteRecommendations(finalAnswers, 12);
+    if (localMatches && localMatches.length > 0) {
+      setResults(localMatches);
+    }
+    setLoading(false);
+
+    // 2. Background sync with server backend API if available
     try {
-      setLoading(true);
-      setCompleted(true);
       const res = await recommendationService.submitSmartFinder(finalAnswers);
-      if (res.success && res.data) {
+      if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
         setResults(res.data);
-      } else {
-        setResults([]);
       }
     } catch (err) {
-      console.error('Failed to load taste recommendations:', err);
-      setResults([]);
-    } finally {
-      setLoading(false);
+      console.warn('Backend taste recommendation sync handled silently:', err.message);
     }
   };
 
@@ -140,7 +138,7 @@ const SmartFinder = () => {
           Find Authentic Delicacies Matched to Your Exact Taste
         </h1>
         <p className="text-xs sm:text-sm text-charcoal-muted max-w-xl mx-auto">
-          Answer 4 quick taste questions or pick a instant preset to get personalized regional food recommendations scored with our AI taste algorithm.
+          Answer 4 quick taste questions or pick an instant preset to get personalized regional food recommendations scored with our AI taste algorithm.
         </p>
 
         {/* Instant Quick Presets Bar */}
@@ -151,7 +149,7 @@ const SmartFinder = () => {
               <button
                 key={preset.name}
                 onClick={() => applyPreset(preset.answers)}
-                className="px-3 py-1.5 rounded-full bg-white hover:bg-brand-50 border border-warmbg-accent hover:border-brand-300 text-charcoal text-xs font-semibold shadow-2xs transition-all flex items-center gap-1 hover:scale-105 active:scale-95"
+                className="px-3.5 py-1.5 rounded-full bg-white hover:bg-brand-50 border border-warmbg-accent hover:border-brand-300 text-charcoal text-xs font-semibold shadow-2xs transition-all flex items-center gap-1 hover:scale-105 active:scale-95 cursor-pointer"
               >
                 {preset.name}
               </button>
@@ -234,7 +232,7 @@ const SmartFinder = () => {
                   submitQuiz(answers);
                 }
               }}
-              className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-sm transition-all"
+              className="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
             >
               <span>{currentStep === stepsData.length - 1 ? 'Show Recommendations' : 'Next Step'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -256,14 +254,14 @@ const SmartFinder = () => {
                   <h2 className="font-display font-bold text-xl text-charcoal">Your Personalized Taste Recommendations</h2>
                 </div>
                 <p className="text-xs text-charcoal-muted">
-                  Scored based on your craving, spice tolerance, budget, and regional preferences.
+                  Scored based on your craving ({answers.foodType}), spice ({answers.spiceLevel}), budget ({answers.budget}), and region ({answers.region}).
                 </p>
               </div>
 
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 bg-warmbg-soft hover:bg-warmbg-card text-charcoal font-bold text-xs rounded-xl border border-warmbg-accent flex items-center gap-2 transition-all"
+                  className="px-4 py-2 bg-warmbg-soft hover:bg-warmbg-card text-charcoal font-bold text-xs rounded-xl border border-warmbg-accent flex items-center gap-2 transition-all cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-brand-600" />
                   Retake Quiz
@@ -356,7 +354,7 @@ const SmartFinder = () => {
               </p>
               <button 
                 onClick={handleReset} 
-                className="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition-all shadow-sm"
+                className="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition-all shadow-sm cursor-pointer"
               >
                 Reset Taste Finder
               </button>
