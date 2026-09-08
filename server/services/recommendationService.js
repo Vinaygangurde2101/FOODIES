@@ -1,4 +1,44 @@
 const Product = require('../models/Product');
+const path = require('path');
+const fs = require('fs');
+
+// Seed products cache fallback
+let seedProductsCache = null;
+const getSeedProducts = () => {
+  if (!seedProductsCache) {
+    try {
+      const seedPath = path.join(__dirname, '../seed/seedData.json');
+      if (fs.existsSync(seedPath)) {
+        seedProductsCache = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
+      } else {
+        seedProductsCache = [];
+      }
+    } catch (err) {
+      seedProductsCache = [];
+    }
+  }
+  return seedProductsCache;
+};
+
+// Helper to fetch all available products from DB or seed fallback
+const getAvailableProducts = async (filter = {}) => {
+  try {
+    const products = await Product.find(filter).lean();
+    if (products && products.length > 0) return products;
+  } catch (err) {
+    console.warn('MongoDB query failed in recommendationService, using seed fallback:', err.message);
+  }
+
+  let items = getSeedProducts();
+  if (filter.stock && filter.stock.$gt !== undefined) {
+    items = items.filter(p => (p.stock || 50) > filter.stock.$gt);
+  }
+  if (filter._id && filter._id.$nin) {
+    const ids = filter._id.$nin.map(id => id.toString());
+    items = items.filter(p => !ids.includes(p._id.toString()));
+  }
+  return items;
+};
 
 // Craving to product category mapping
 const CRAVING_CATEGORY_MAP = {
@@ -14,7 +54,7 @@ const CRAVING_CATEGORY_MAP = {
 const getSmartFinderRecommendations = async (answers, limit = 8) => {
   const { foodType, budget, spiceLevel, region } = answers;
   
-  const allProducts = await Product.find({ stock: { $gt: 0 } }).lean();
+  const allProducts = await getAvailableProducts({ stock: { $gt: 0 } });
   const targetCategories = CRAVING_CATEGORY_MAP[foodType] || ['Snacks', 'Sweets', 'Pickles'];
 
   const scoredProducts = allProducts.map(product => {
@@ -92,7 +132,7 @@ const getCrossSellRecommendations = async (cartProductIds = [], cartSubtotal = 0
     stock: { $gt: 0 }
   };
 
-  const availableProducts = await Product.find(query).lean();
+  const availableProducts = await getAvailableProducts(query);
 
   const scoredCrossSells = availableProducts.map(product => {
     let fitScore = 0;
@@ -129,22 +169,40 @@ const getCrossSellRecommendations = async (cartProductIds = [], cartSubtotal = 0
 
 // Find related products matching category or region
 const getRelatedProducts = async (productId, limit = 4) => {
-  const currentProduct = await Product.findById(productId);
+  let currentProduct = null;
+  try {
+    currentProduct = await Product.findById(productId).lean();
+  } catch (err) {
+    console.warn('MongoDB findById failed in getRelatedProducts, using seed fallback');
+  }
+
+  if (!currentProduct) {
+    const seeds = getSeedProducts();
+    currentProduct = seeds.find(p => p._id.toString() === productId.toString() || p.slug === productId);
+  }
+
   if (!currentProduct) return [];
 
-  return await Product.find({
-    _id: { $ne: productId },
-    $or: [
-      { category: currentProduct.category },
-      { region: currentProduct.region },
-      { spiceLevel: currentProduct.spiceLevel }
-    ]
-  }).limit(limit).lean();
+  const allProducts = await getAvailableProducts();
+  return allProducts
+    .filter(p => p._id.toString() !== currentProduct._id.toString() && (p.category === currentProduct.category || p.region === currentProduct.region || p.spiceLevel === currentProduct.spiceLevel))
+    .slice(0, limit);
 };
 
 // Frequently bought together bundle calculation
 const getFrequentlyBoughtTogether = async (productId) => {
-  const mainProduct = await Product.findById(productId).lean();
+  let mainProduct = null;
+  try {
+    mainProduct = await Product.findById(productId).lean();
+  } catch (err) {
+    console.warn('MongoDB findById failed in getFrequentlyBoughtTogether, using seed fallback');
+  }
+
+  if (!mainProduct) {
+    const seeds = getSeedProducts();
+    mainProduct = seeds.find(p => p._id.toString() === productId.toString() || p.slug === productId);
+  }
+
   if (!mainProduct) return null;
 
   let categoryFilter = [];
@@ -152,11 +210,10 @@ const getFrequentlyBoughtTogether = async (productId) => {
   else if (mainProduct.category === 'Pickles') categoryFilter = ['Masala', 'Snacks', 'Traditional Specials'];
   else categoryFilter = ['Snacks', 'Pickles', 'Healthy'];
 
-  const bundleItems = await Product.find({
-    _id: { $ne: productId },
-    category: { $in: categoryFilter },
-    price: { $gte: 100, $lte: 350 }
-  }).limit(2).lean();
+  const allProducts = await getAvailableProducts();
+  const bundleItems = allProducts
+    .filter(p => p._id.toString() !== mainProduct._id.toString() && categoryFilter.includes(p.category) && p.price >= 100 && p.price <= 350)
+    .slice(0, 2);
 
   const totalBundlePrice = mainProduct.price + bundleItems.reduce((acc, item) => acc + item.price, 0);
 

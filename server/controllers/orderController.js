@@ -2,6 +2,40 @@ const Order = require('../models/Order');
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 const { trackEvent } = require('../services/analyticsService');
+const path = require('path');
+const fs = require('fs');
+
+// In-memory order storage fallback
+const inMemoryOrders = new Map();
+
+// Seed products cache fallback
+let seedProductsCache = null;
+const getSeedProducts = () => {
+  if (!seedProductsCache) {
+    try {
+      const seedPath = path.join(__dirname, '../seed/seedData.json');
+      if (fs.existsSync(seedPath)) {
+        seedProductsCache = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
+      } else {
+        seedProductsCache = [];
+      }
+    } catch (err) {
+      seedProductsCache = [];
+    }
+  }
+  return seedProductsCache;
+};
+
+const findProductById = async (productId) => {
+  try {
+    const p = await Product.findById(productId).lean();
+    if (p) return p;
+  } catch (err) {
+    // fallback below
+  }
+  const seeds = getSeedProducts();
+  return seeds.find(p => p._id.toString() === productId.toString());
+};
 
 // Generate unique order ID
 const generateOrderId = () => {
@@ -25,7 +59,7 @@ const createOrder = async (req, res, next) => {
     const verifiedItems = [];
 
     for (const item of items) {
-      const product = await Product.findById(item.productId);
+      const product = await findProductById(item.productId);
       if (!product) {
         return res.status(400).json({ success: false, message: `Product ${item.name || item.productId} no longer exists` });
       }
@@ -49,7 +83,7 @@ const createOrder = async (req, res, next) => {
     const orderId = generateOrderId();
     const userId = req.user ? req.user._id : undefined;
 
-    const order = await Order.create({
+    const orderPayload = {
       orderId,
       userId,
       items: verifiedItems,
@@ -59,15 +93,30 @@ const createOrder = async (req, res, next) => {
       totalAmount,
       paymentMethod: paymentMethod === 'Online Payment' ? 'Online Demo Payment' : paymentMethod,
       paymentStatus: paymentMethod === 'Online Payment' ? 'Completed' : 'Pending',
-      orderStatus: 'Processing'
-    });
+      orderStatus: 'Processing',
+      createdAt: new Date().toISOString()
+    };
+
+    let order = null;
+    try {
+      order = await Order.create(orderPayload);
+    } catch (err) {
+      console.warn('MongoDB Order.create failed, falling back to in-memory order:', err.message);
+      order = orderPayload;
+    }
+
+    inMemoryOrders.set(orderId, order);
 
     // Clear cart after successful checkout
-    const sessionId = req.headers['x-session-id'] || 'guest_session';
-    if (userId) {
-      await Cart.findOneAndUpdate({ userId }, { items: [] });
-    } else {
-      await Cart.findOneAndUpdate({ sessionId }, { items: [] });
+    try {
+      const sessionId = req.headers['x-session-id'] || 'guest_session';
+      if (userId) {
+        await Cart.findOneAndUpdate({ userId }, { items: [] });
+      } else {
+        await Cart.findOneAndUpdate({ sessionId }, { items: [] });
+      }
+    } catch (err) {
+      // Ignored for offline DB
     }
 
     trackEvent('order_completed', {
@@ -92,7 +141,18 @@ const createOrder = async (req, res, next) => {
 // @access  Public
 const getOrderById = async (req, res, next) => {
   try {
-    const order = await Order.findOne({ orderId: req.params.orderId });
+    const { orderId } = req.params;
+    let order = null;
+    try {
+      order = await Order.findOne({ orderId });
+    } catch (err) {
+      console.warn('MongoDB Order.findOne failed, checking in-memory fallback');
+    }
+
+    if (!order) {
+      order = inMemoryOrders.get(orderId);
+    }
+
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
@@ -108,7 +168,12 @@ const getOrderById = async (req, res, next) => {
 // @access  Private (Authenticated User)
 const getUserOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({ userId: req.user._id }).sort({ createdAt: -1 });
+    let orders = [];
+    try {
+      orders = await Order.find({ userId: req.user._id }).sort({ createdAt: -1 });
+    } catch (err) {
+      console.warn('MongoDB getUserOrders failed');
+    }
     res.json({ success: true, count: orders.length, data: orders });
   } catch (error) {
     next(error);
