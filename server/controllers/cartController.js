@@ -27,14 +27,24 @@ const getSeedProducts = () => {
 
 // Find product by id from DB or seed fallback
 const findProductById = async (productId) => {
+  if (!productId) return null;
+  const targetId = (typeof productId === 'object' ? (productId._id || productId.productId || productId) : productId).toString();
+
   try {
-    const p = await Product.findById(productId).lean();
+    let p = null;
+    if (targetId.match(/^[0-9a-fA-F]{24}$/)) {
+      p = await Product.findById(targetId).lean();
+    }
+    if (!p) {
+      p = await Product.findOne({ slug: targetId }).lean();
+    }
     if (p) return p;
   } catch (err) {
     // fallback below
   }
+
   const seeds = getSeedProducts();
-  return seeds.find(p => p._id.toString() === productId.toString());
+  return seeds.find(p => p && ((p._id && p._id.toString() === targetId) || p.slug === targetId));
 };
 
 // Helper to calculate cart totals safely using server prices
