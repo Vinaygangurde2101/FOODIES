@@ -1,4 +1,4 @@
-import PRODUCTS_DATA from '../data/productsData';
+import PRODUCTS_DATA from '../data/productsData.js';
 
 const CRAVING_MAP = {
   'Spicy': {
