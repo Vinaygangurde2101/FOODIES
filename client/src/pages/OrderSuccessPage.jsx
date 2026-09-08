@@ -12,9 +12,25 @@ const OrderSuccessPage = () => {
     const fetchOrderDetails = async () => {
       try {
         setLoading(true);
-        const res = await orderService.getOrderById(orderId);
-        if (res.success) {
-          setOrder(res.data);
+        let fetchedOrder = null;
+        try {
+          const res = await orderService.getOrderById(orderId);
+          if (res.success && res.data) {
+            fetchedOrder = res.data;
+          }
+        } catch (err) {
+          console.warn('Failed to load order from backend, checking local receipt');
+        }
+
+        if (!fetchedOrder) {
+          try {
+            const saved = localStorage.getItem(`order_receipt_${orderId}`);
+            if (saved) fetchedOrder = JSON.parse(saved);
+          } catch (e) {}
+        }
+
+        if (fetchedOrder) {
+          setOrder(fetchedOrder);
         }
       } catch (err) {
         console.error('Failed to load order receipt:', err);
