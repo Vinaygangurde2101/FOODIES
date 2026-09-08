@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AboutPage from './pages/AboutPage';
 import UserProfile from './pages/UserProfile';
+import NotFound from './pages/NotFound';
 
 const AppContent = () => {
   const { toastMessage } = useCart();
@@ -37,6 +38,7 @@ const AppContent = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
