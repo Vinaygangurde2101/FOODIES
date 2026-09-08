@@ -106,109 +106,110 @@ export const CartProvider = ({ children }) => {
     fetchCart();
   }, []);
 
-  const addToCart = async (productId, quantity = 1, productName = 'Item', productObj = null) => {
-    let backendSuccess = false;
-    try {
-      const res = await cartService.addToCart(productId, quantity);
-      if (res.success && res.data) {
-        setCart(res.data);
-        try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
-        fetchCrossSells(res.data);
-        showToast(`Added "${productName}" to your cart! 🛒`);
-        backendSuccess = true;
-        return res;
-      }
-    } catch (err) {
-      console.warn('Backend addToCart failed, using client-side fallback:', err.message);
-    }
+  const addToCart = (productId, quantity = 1, productName = 'Item', productObj = null) => {
+    let updatedCartObj = null;
 
-    if (!backendSuccess) {
-      setCart(prevCart => {
-        const existingItems = [...(prevCart.items || [])];
-        const idx = existingItems.findIndex(i => (i.product?._id || i.productId || i._id) === productId);
-        if (idx > -1) {
-          existingItems[idx] = {
-            ...existingItems[idx],
-            quantity: existingItems[idx].quantity + quantity
-          };
-        } else {
-          const itemProduct = productObj || {
-            _id: productId,
-            name: productName,
-            price: 150,
-            images: ['/images/products/kolhapuri-masala.jpg']
-          };
-          existingItems.push({
-            _id: productId,
-            productId,
-            product: itemProduct,
-            price: itemProduct.price || 150,
-            quantity
-          });
+    // 1. Instant Optimistic Local Update (0ms latency)
+    setCart(prevCart => {
+      const existingItems = [...(prevCart.items || [])];
+      const idx = existingItems.findIndex(i => (i.product?._id || i.productId || i._id) === productId);
+      if (idx > -1) {
+        existingItems[idx] = {
+          ...existingItems[idx],
+          quantity: existingItems[idx].quantity + quantity
+        };
+      } else {
+        const itemProduct = productObj || {
+          _id: productId,
+          name: productName,
+          price: 150,
+          images: ['/images/products/kolhapuri-masala.jpg']
+        };
+        existingItems.push({
+          _id: productId,
+          productId,
+          product: itemProduct,
+          price: itemProduct.price || 150,
+          quantity
+        });
+      }
+      updatedCartObj = recalculateLocalCart(existingItems);
+      return updatedCartObj;
+    });
+
+    // 2. Instant User Feedback
+    showToast(`Added "${productName}" to your cart! 🛒`);
+    if (updatedCartObj) fetchCrossSells(updatedCartObj);
+
+    // 3. Silent Non-blocking Background Sync
+    cartService.addToCart(productId, quantity)
+      .then(res => {
+        if (res && res.success && res.data) {
+          setCart(res.data);
+          try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
         }
-        const updatedCart = recalculateLocalCart(existingItems);
-        showToast(`Added "${productName}" to your cart! 🛒`);
-        fetchCrossSells(updatedCart);
-        return updatedCart;
+      })
+      .catch(err => {
+        console.warn('Silent background cart sync:', err.message);
       });
-    }
   };
 
-  const updateQuantity = async (productId, quantity) => {
-    try {
-      const res = await cartService.updateQuantity(productId, quantity);
-      if (res.success && res.data) {
-        setCart(res.data);
-        try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
-        fetchCrossSells(res.data);
-        return res;
-      }
-    } catch (err) {
-      console.warn('Backend updateQuantity failed, using client fallback');
-    }
+  const updateQuantity = (productId, quantity) => {
+    let updatedCartObj = null;
 
+    // 1. Instant Optimistic Local Update
     setCart(prevCart => {
       const existingItems = [...(prevCart.items || [])];
       const idx = existingItems.findIndex(i => (i.product?._id || i.productId || i._id) === productId);
       if (idx > -1) {
         existingItems[idx] = { ...existingItems[idx], quantity };
       }
-      const updatedCart = recalculateLocalCart(existingItems);
-      fetchCrossSells(updatedCart);
-      return updatedCart;
+      updatedCartObj = recalculateLocalCart(existingItems);
+      return updatedCartObj;
     });
+
+    if (updatedCartObj) fetchCrossSells(updatedCartObj);
+
+    // 2. Silent Non-blocking Background Sync
+    cartService.updateQuantity(productId, quantity)
+      .then(res => {
+        if (res && res.success && res.data) {
+          setCart(res.data);
+          try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
+        }
+      })
+      .catch(err => {
+        console.warn('Silent background quantity update sync:', err.message);
+      });
   };
 
-  const removeFromCart = async (productId) => {
-    try {
-      const res = await cartService.removeFromCart(productId);
-      if (res.success && res.data) {
-        setCart(res.data);
-        try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
-        fetchCrossSells(res.data);
-        showToast('Item removed from cart');
-        return res;
-      }
-    } catch (err) {
-      console.warn('Backend removeFromCart failed, using client fallback');
-    }
+  const removeFromCart = (productId) => {
+    let updatedCartObj = null;
 
+    // 1. Instant Optimistic Local Update
     setCart(prevCart => {
       const existingItems = (prevCart.items || []).filter(i => (i.product?._id || i.productId || i._id) !== productId);
-      const updatedCart = recalculateLocalCart(existingItems);
-      showToast('Item removed from cart');
-      fetchCrossSells(updatedCart);
-      return updatedCart;
+      updatedCartObj = recalculateLocalCart(existingItems);
+      return updatedCartObj;
     });
+
+    showToast('Item removed from cart');
+    if (updatedCartObj) fetchCrossSells(updatedCartObj);
+
+    // 2. Silent Non-blocking Background Sync
+    cartService.removeFromCart(productId)
+      .then(res => {
+        if (res && res.success && res.data) {
+          setCart(res.data);
+          try { localStorage.setItem('foodies_cart', JSON.stringify(res.data)); } catch (e) {}
+        }
+      })
+      .catch(err => {
+        console.warn('Silent background remove item sync:', err.message);
+      });
   };
 
   const clearCart = async () => {
-    try {
-      await cartService.clearCart();
-    } catch (err) {
-      console.warn('Backend clearCart failed');
-    }
-
     const emptyCart = {
       items: [],
       subtotal: 0,
@@ -221,6 +222,12 @@ export const CartProvider = ({ children }) => {
     setCart(emptyCart);
     setCrossSells([]);
     try { localStorage.removeItem('foodies_cart'); } catch (e) {}
+
+    try {
+      await cartService.clearCart();
+    } catch (err) {
+      console.warn('Backend clearCart failed');
+    }
   };
 
   const cartCount = (cart.items || []).reduce((acc, item) => acc + item.quantity, 0);

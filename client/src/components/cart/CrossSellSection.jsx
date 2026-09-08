@@ -54,7 +54,7 @@ const CrossSellSection = () => {
             </div>
 
             <button
-              onClick={() => addToCart(product._id, 1, product.name)}
+              onClick={() => addToCart(product._id, 1, product.name, product)}
               className="ml-3 p-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg flex items-center justify-center flex-shrink-0 transition-colors shadow-xs"
               title="Add to cart"
             >

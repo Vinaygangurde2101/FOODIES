@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     if (isAvailable) {
-      addToCart(product._id, 1, product.name);
+      addToCart(product._id, 1, product.name, product);
     }
   };
 

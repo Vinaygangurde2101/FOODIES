@@ -12,6 +12,7 @@ const getOrCreateSessionId = () => {
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+  timeout: 4000,
   headers: {
     'Content-Type': 'application/json',
   },

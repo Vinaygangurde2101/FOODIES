@@ -93,22 +93,22 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (isAvailable) {
-      addToCart(product._id, quantity, product.name);
+      addToCart(product._id, quantity, product.name, product);
     }
   };
 
   const handleBuyNow = () => {
     if (isAvailable) {
-      addToCart(product._id, quantity, product.name);
+      addToCart(product._id, quantity, product.name, product);
       navigate('/cart');
     }
   };
 
   const handleAddBundleToCart = async () => {
     if (frequentlyBought) {
-      await addToCart(frequentlyBought.mainProduct._id, 1, frequentlyBought.mainProduct.name);
+      addToCart(frequentlyBought.mainProduct._id, 1, frequentlyBought.mainProduct.name, frequentlyBought.mainProduct);
       for (const item of frequentlyBought.bundleItems) {
-        await addToCart(item._id, 1, item.name);
+        addToCart(item._id, 1, item.name, item);
       }
     }
   };
